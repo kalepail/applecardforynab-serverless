@@ -1,0 +1,17 @@
+{
+  "plugins": [
+    "source-map-support",
+    "@babel/plugin-transform-runtime"
+  ],
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "targets":
+        {
+          "node": "8.10"
+        }
+      }
+    ]
+  ]
+}

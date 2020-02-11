@@ -1,0 +1,61 @@
+tenant: tyvdh
+app: applecardforynab
+service: applecardforynab
+
+plugins:
+  - serverless-webpack
+  - serverless-offline
+
+package:
+  # individually: true
+  # excludeDevDependencies: false
+
+custom:
+  webpack:
+    webpackConfig: ./webpack.config.js
+    includeModules:
+      forceExclude:
+        - aws-sdk
+  serverless-offline:
+    port: 4000
+
+provider:
+  name: aws
+  runtime: nodejs10.x
+  region: us-east-1
+  environment: ${file(env.yml)}
+  tracing:
+    lambda: true
+
+functions:
+  parse:
+    handler: handler.parse
+    timeout: 10
+    events:
+      - http:
+          path: parse
+          method: POST
+  access:
+    handler: handler.access
+    timeout: 5
+    events:
+      - http:
+          path: access
+          method: POST
+          cors: true
+  refresh:
+    handler: handler.refresh
+    timeout: 5
+    events:
+      - http:
+          path: refresh
+          method: POST
+          cors: true
+  update:
+    handler: handler.update
+    timeout: 5
+    events:
+      - http:
+          path: update
+          method: POST
+          cors: true

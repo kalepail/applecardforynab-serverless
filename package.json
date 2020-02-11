@@ -1,0 +1,40 @@
+{
+  "private": true,
+  "scripts": {
+    "dev": "sls offline start",
+    "deploy": "sls deploy"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.8.4",
+    "@babel/plugin-transform-runtime": "^7.8.3",
+    "@babel/preset-env": "^7.8.4",
+    "@babel/runtime": "^7.8.4",
+    "babel-loader": "^8.0.6",
+    "babel-plugin-source-map-support": "^2.1.1",
+    "serverless-domain-manager": "^3.3.1",
+    "serverless-offline": "5.12.1",
+    "serverless-webpack": "^5.3.1",
+    "webpack": "^4.41.5",
+    "webpack-node-externals": "^1.7.2"
+  },
+  "dependencies": {
+    "@sendgrid/mail": "^6.5.2",
+    "@tinyanvil/sjcl": "^1.0.8",
+    "axios": "^0.19.2",
+    "bignumber.js": "^9.0.0",
+    "bluebird": "^3.7.2",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "fs": "0.0.1-security",
+    "lodash": "^4.17.15",
+    "moment": "^2.24.0",
+    "multer": "^1.4.2",
+    "papaparse": "^5.1.1",
+    "pg": "^7.18.1",
+    "serverless-http": "^2.3.1",
+    "sha.js": "^2.4.11",
+    "source-map-support": "^0.5.16",
+    "ynab": "^1.17.0"
+  }
+}
