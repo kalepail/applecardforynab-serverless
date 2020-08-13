@@ -1,4 +1,4 @@
-tenant: tyvdh
+org: tyvdh
 app: applecardforynab
 service: applecardforynab
 
@@ -7,8 +7,8 @@ plugins:
   - serverless-offline
 
 package:
-  # individually: true
-  # excludeDevDependencies: false
+  individually: true
+  excludeDevDependencies: true
 
 custom:
   webpack:
@@ -17,7 +17,8 @@ custom:
       forceExclude:
         - aws-sdk
   serverless-offline:
-    port: 4000
+    useChildProcesses: true
+    httpPort: 4000
 
 provider:
   name: aws
