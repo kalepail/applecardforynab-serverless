@@ -72,10 +72,15 @@ export async function sendYnabFiles(parsedCipher, files, id, email) {
           }
         },
         async complete({data}) {
-          const transactions = _.map(data, (row) => {
+          const now = moment.utc().format('YYYY-MM-DD')
+          const transactions = _
+          .chain(data)
+          .orderBy(['Date', 'Clearing Date', 'Type', 'Amount', 'Payee', 'Memo', 'Category'], 'desc')
+          .map((row, i) => {
             const amount = new BigNumber(row.Amount).times('-1000')
 
             return {
+              import_id: `ACFYNAB:${amount.toFixed()}:${now}:${i}`,
               account_id: parsedCipher.ynab_account_id,
               date: moment(row.Date, 'MM/DD/YYYY').format('YYYY-MM-DD'),
               amount: amount.toFixed(),
@@ -84,6 +89,7 @@ export async function sendYnabFiles(parsedCipher, files, id, email) {
               cleared: 'cleared'
             }
           })
+          .value()
 
           try {
             await ynabAPI.transactions.createTransactions('default', {transactions})
