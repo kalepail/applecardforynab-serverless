@@ -54,6 +54,7 @@ app.post('/parse', upload.any(), async (req, res) => {
             Buffer.from(account.cipher, 'base64').toString('utf8')
           )
         )
+
         await sendYnabFiles(
           parsedCipher,
           _.map(req.files, (file) => Buffer.from(file.buffer).toString('utf8')),
