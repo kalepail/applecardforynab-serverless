@@ -28,7 +28,7 @@
     "express": "^4.17.1",
     "fs": "0.0.1-security",
     "lodash": "^4.17.20",
-    "moment": "^2.27.0",
+    "moment": "^2.29.2",
     "multer": "^1.4.2",
     "papaparse": "^5.3.0",
     "pg": "^8.3.3",
